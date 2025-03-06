@@ -11,6 +11,7 @@ services:
       - FLASK_ENV=development
     networks:
       - default
+    restart: always
   test:
     build:
       context: .
@@ -22,6 +23,7 @@ services:
       - ./src:/app
     networks:
       - default
+    restart: always
 networks:
   default:
     driver: bridge
