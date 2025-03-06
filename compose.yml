@@ -1,0 +1,27 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./src:/app
+    ports:
+      - "7777:7777"
+    environment:
+      - FLASK_ENV=development
+    networks:
+      - default
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - app
+    command: watchmedo shell-command --patterns="*.py" --recursive --command='pytest' /app
+    volumes:
+      - ./src:/app
+    networks:
+      - default
+networks:
+  default:
+    driver: bridge

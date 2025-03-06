@@ -1,0 +1,5 @@
+watchdog
+pymongo
+python-dotenv
+pytest
+flask
